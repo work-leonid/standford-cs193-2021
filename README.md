@@ -1,1 +1,1 @@
-# standord-cs193-2021
+# stanford-cs193-2021
