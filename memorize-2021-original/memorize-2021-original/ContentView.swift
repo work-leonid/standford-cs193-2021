@@ -9,51 +9,52 @@ import SwiftUI
 
 struct ContentView: View {
     
-    let emojis = ["🔥", "😀", "😇", "😈", "👄", "👧", "🪀", "🏀"]
+    private var vm = EmojiGameViewModel()
+//    let emojis = ["🔥", "😀", "😇", "😈", "👄", "👧", "🪀", "🏀"]
     @State private var emojiCount = 3
     
     var body: some View {
         VStack {
             ScrollView {
                 LazyVGrid(columns: [GridItem(.adaptive(minimum: 140))]) {
-                    ForEach(emojis[0..<emojiCount], id:\.self) { emoji in
-                        CardView(content: emoji)
+                    ForEach(vm.cards) { emoji in
+                        CardView(content: emoji.content)
                     }
                 }
             }
             .padding()
             Spacer()
-            HStack {
-                removeButton
-                Spacer()
-                addButton
-            }
-            .font(.largeTitle)
-            .padding(.horizontal)
+//            HStack {
+//                removeButton
+//                Spacer()
+////                addButton
+//            }
+//            .font(.largeTitle)
+//            .padding(.horizontal)
         }
         
     }
     
-    var removeButton: some View {
-        Button(action: {
-            if emojiCount > 0 {
-                emojiCount -= 1
-                print(emojiCount)
-            }
-        }, label: {
-            Image(systemName: "minus.circle")
-        })
-    }
-    
-    var addButton: some View {
-        Button(action: {
-            if emojiCount < emojis.count {
-                emojiCount += 1
-            }
-        }, label: {
-            Image(systemName: "plus.circle")
-        })
-    }
+//    var removeButton: some View {
+//        Button(action: {
+//            if emojiCount > 0 {
+//                emojiCount -= 1
+//                print(emojiCount)
+//            }
+//        }, label: {
+//            Image(systemName: "minus.circle")
+//        })
+//    }
+//
+//    var addButton: some View {
+//        Button(action: {
+//            if emojiCount < emojis.count {
+//                emojiCount += 1
+//            }
+//        }, label: {
+//            Image(systemName: "plus.circle")
+//        })
+//    }
 }
 
 struct CardView: View {
